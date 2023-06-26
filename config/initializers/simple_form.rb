@@ -7,46 +7,79 @@
 # Dir[Rails.root.join('lib/components/**/*.rb')].each { |f| require f }
 #
 SimpleForm.setup do |config|
-  config.wrappers :default, class: :input,
-    hint_class: :field_with_hint, error_class: :field_with_errors, valid_class: :field_without_errors do |b|
-    ## Extensions enabled by default
-    # Any of these extensions can be disabled for a
-    # given input by passing: `f.input EXTENSION_NAME => false`.
-    # You can make any of these extensions optional by
-    # renaming `b.use` to `b.optional`.
+  # Define the way to render check boxes / radio buttons with labels.
+  # Defaults to :nested for bootstrap config.
+  #   inline: input + label
+  #   nested: label > input
+  config.boolean_style = :inline
+
+  # Default class for buttons
+  config.button_class = 'px-4 py-2 text-sm font-medium rounded-md bg-indigo-500 text-white cursor-pointer focus:shadow-outline hover:bg-indigo-600'
+
+  # Series of attempts to detect a default label method for collection.
+  # config.collection_label_methods = [ :to_label, :name, :title, :to_s ]
+
+  # Series of attempts to detect a default value method for collection.
+  # config.collection_value_methods = [ :id, :to_s ]
+
+  # You can wrap a collection of radio/check boxes in a pre-defined tag, defaulting to none.
+  # config.collection_wrapper_tag = nil
+
+  # You can define the class to use on all collection wrappers. Defaulting to none.
+  # config.collection_wrapper_class = nil
+
+  # How the label text should be generated altogether with the required text.
+  config.label_text = lambda { |label, required, explicit_label| "#{label} #{required}" }
+  # You can define the class to use on all labels. Default is nil.
+  # config.label_class = nil
+
+  # You can define the default class to be used on forms. Can be overridden
+  # with `html: { :class }`. Defaulting to none.
+  # config.default_form_class = nil
+
+  # You can define which elements should obtain additional classes
+  # config.generate_additional_classes_for = [:wrapper, :label, :input]
+
+  # Whether attributes are required by default (or not). Default is true.
+  # config.required_by_default = true
+
+  # CSS class to add for error notification helper.
+  config.error_notification_class = 'text-red-500 mb-3'
+  # Default tag used for error notification helper.
+  config.error_notification_tag = :div
+
+  # Method used to tidy up errors. Specify any Rails Array method.
+  # :first lists the first message for each field.
+  # :to_sentence to list all errors for each field.
+  config.error_method = :to_sentence
+
+  # add validation classes to `input_field`
+  config.input_field_error_class = 'border-red-500'
+  config.input_field_valid_class = 'border-green-400'
+  config.label_class = 'text-sm font-medium text-gray-600'
+
+
+  # vertical default_wrapper
+  config.wrappers :vertical_input, tag: 'div', class: 'mb-3' do |b|
 
     # Determines whether to use HTML5 (:email, :url, ...)
     # and required attributes
     b.use :html5
-
-    # Calculates placeholders automatically from I18n
-    # You can also pass a string as f.input placeholder: "Placeholder"
     b.use :placeholder
 
-    # Calculates maxlength from length validations for string inputs
-    # and/or database column lengths
     b.optional :maxlength
-
-    # Calculate minlength from length validations for string inputs
     b.optional :minlength
-
-    # Calculates pattern from format validations for string inputs
     b.optional :pattern
-
-    # Calculates min and max from length validations for numeric inputs
     b.optional :min_max
-
-    # Calculates readonly automatically from readonly attributes
     b.optional :readonly
 
     ## Inputs
     # b.use :input, class: 'input', error_class: 'is-invalid', valid_class: 'is-valid'
-    # b.use :label_input
-    b.use :hint,  wrap_with: { tag: :span, class: "text-indigo-700 text-xs italic" }
     # b.use :error, wrap_with: { tag: :span, class: :error }
 
-    b.use :label, class: "block text-gray-700 mb-2 mt-3"
-    b.use :input, class: "block my-1 w-full"
+    b.use :label, class: "block text-gray-700 mb-2"
+    b.use :input, class: "block my-1 w-full rounded shadow appearance-none border border-gray-500"
+    b.use :hint,  wrap_with: { tag: :p, class: "text-indigo-700 text-xs italic" }
 
     ## full_messages_for
     # If you want to display the full error message for the attribute, you can
@@ -77,72 +110,9 @@ SimpleForm.setup do |config|
   end
 
   # The default wrapper to be used by the FormBuilder.
-  config.default_wrapper = :default
+  config.default_wrapper = :vertical_input
 
-  # Define the way to render check boxes / radio buttons with labels.
-  # Defaults to :nested for bootstrap config.
-  #   inline: input + label
-  #   nested: label > input
-  config.boolean_style = :inline
-
-  # Default class for buttons
-  config.button_class = 'px-4 py-2 text-sm font-medium rounded-md bg-indigo-500 text-white cursor-pointer focus:shadow-outline hover:bg-indigo-600'
-
-  # Method used to tidy up errors. Specify any Rails Array method.
-  # :first lists the first message for each field.
-  # Use :to_sentence to list all errors for each field.
-  # config.error_method = :first
-
-  # Default tag used for error notification helper.
-  config.error_notification_tag = :div
-
-  # CSS class to add for error notification helper.
-  config.error_notification_class = 'error_notification'
-
-  # Series of attempts to detect a default label method for collection.
-  # config.collection_label_methods = [ :to_label, :name, :title, :to_s ]
-
-  # Series of attempts to detect a default value method for collection.
-  # config.collection_value_methods = [ :id, :to_s ]
-
-  # You can wrap a collection of radio/check boxes in a pre-defined tag, defaulting to none.
-  # config.collection_wrapper_tag = nil
-
-  # You can define the class to use on all collection wrappers. Defaulting to none.
-  # config.collection_wrapper_class = nil
-
-  # You can wrap each item in a collection of radio/check boxes with a tag,
-  # defaulting to :span.
-  # config.item_wrapper_tag = :span
-
-  # You can define a class to use in all item wrappers. Defaulting to none.
-  # config.item_wrapper_class = nil
-
-  # How the label text should be generated altogether with the required text.
-  config.label_text = lambda { |label, required, explicit_label| "#{label} #{required}" }
-  # You can define the class to use on all labels. Default is nil.
-  # config.label_class = nil
-
-  # You can define the default class to be used on forms. Can be overridden
-  # with `html: { :class }`. Defaulting to none.
-  # config.default_form_class = nil
-
-  # You can define which elements should obtain additional classes
-  # config.generate_additional_classes_for = [:wrapper, :label, :input]
-
-  # Whether attributes are required by default (or not). Default is true.
-  # config.required_by_default = true
-
-  # Tell browsers whether to use the native HTML5 validations (novalidate form option).
-  # These validations are enabled in SimpleForm's internal config but disabled by default
-  # in this configuration, which is recommended due to some quirks from different browsers.
-  # To stop SimpleForm from generating the novalidate option, enabling the HTML5 validations,
-  # change this configuration to true.
-  config.browser_validations = false
-
-  # Custom mappings for input types. This should be a hash containing a regexp
-  # to match as key, and the input type that will be used when the field name
-  # matches the regexp as value.
+  # Custom mappings for input types. This should be a hash containing a regexp to match as key.
   # config.input_mappings = { /count/ => :integer }
 
   # Custom wrappers for input types. This should be a hash containing an input
