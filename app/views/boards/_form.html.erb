@@ -5,6 +5,17 @@
   <div class="form-inputs">
     <%= f.input :title %>
   </div>
+
+  <h3 class="text-lg font-bold mt-5">Embeds</h3>
+
+  <div class="my-2" data-controller="nested-rondo">
+    <%= f.simple_fields_for :embeds do |embed| %>
+      <%= render "embed_fields", f: embed %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association "Add Embed", f, :embeds %>
+    </div>
+  </div>
   
   <div class="form-actions mt-4">
     <%= f.button :submit %>

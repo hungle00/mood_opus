@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_26_032054) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_27_041158) do
   create_table "board_memberships", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "board_id", null: false
@@ -27,6 +27,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_032054) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "embed_links", force: :cascade do |t|
+    t.string "url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "embeds", force: :cascade do |t|
+    t.integer "board_id", null: false
+    t.string "title"
+    t.string "embeddable_type"
+    t.integer "embeddable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_embeds_on_board_id"
+    t.index ["embeddable_id"], name: "index_embeds_on_embeddable_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -59,4 +76,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_032054) do
 
   add_foreign_key "board_memberships", "boards"
   add_foreign_key "board_memberships", "users"
+  add_foreign_key "embeds", "boards"
 end

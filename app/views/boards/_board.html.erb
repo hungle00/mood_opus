@@ -1,12 +1,6 @@
-<div id="<%= dom_id board %>">
-  <p>
-    <strong>Title:</strong>
-    <%= board.title %>
-  </p>
-
-  <p>
-    <strong>Slug:</strong>
-    <%= board.slug %>
-  </p>
-
-</div>
+<% @board.embeds.each do |embed| %>
+  <div class='rounded-lg border border-indigo-500 bg-white shadow-sm space-y-2 aspect-[4/3]'>  
+    <p class="text-center text-xl font-bold leading-6 text-gray-800 mt-2"><%= embed.title %></p>
+    <div class="text-center">Display media here</div>
+  </div>
+<% end %>

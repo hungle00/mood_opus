@@ -1,10 +1,27 @@
-<p style="color: green"><%= notice %></p>
+<div class="max-w-6xl mx-auto mt-4 px-2 ">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @board %>
+  <div class="flex justify-between">
+    <h1><%= @board.title %></h1>
+  </div>
 
+  <div class="grid md:grid-cols-4 grid-cols-2 gap-4 mt-4">
+    <%= render @board %>
+
+    <div class='rounded-lg border border-indigo-500 bg-white shadow-sm space-y-2 aspect-[4/3] px-2'>
+      <div class="p-3 flex flex-col justify-around h-full w-full">
+        <input class="block my-1 w-full rounded shadow appearance-none border border-gray-300" type="text" name="new_embed"
+          placeholder="Enter an embeddable link">
+        <button class="btn-indigo focus:shadow-outline">Save</button>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="mt-4">
+    <%= link_to "Edit this board", edit_board_path(@board) %> |
+    <%= link_to "Back to boards", boards_path %>
+
+    <%= button_to "Destroy this board", @board, method: :delete %>
+  </div>
 <div>
-  <%= link_to "Edit this board", edit_board_path(@board) %> |
-  <%= link_to "Back to boards", boards_path %>
-
-  <%= button_to "Destroy this board", @board, method: :delete %>
-</div>

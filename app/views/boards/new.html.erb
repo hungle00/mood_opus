@@ -1,11 +1,11 @@
-<div class="max-w-6xl mx-auto mt-4">
+<div class="max-w-4xl mx-auto bg-indigo-50 min-h-screen py-10 px-3 sm:px-6 lg:px-8 space-y-3 md:space-y-4 shadow-lg">
   <h1>New board</h1>
 
-  <div class="w-full md:w-1/2 mt-2">
+  <div class="w-full mt-2">
     <%= render "form", board: @board %>
   </div>
 
-  <br>
+  <hr>
 
   <div>
     <%= link_to "Back to boards", boards_path %>

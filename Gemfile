@@ -60,6 +60,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem 'letter_opener_web', '~> 2.0'
+  gem 'annotate'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -71,3 +72,4 @@ end
 gem "devise", "~> 4.8", ">= 4.8.1"
 gem "simple_form", "~> 5.1"
 gem "friendly_id", "~> 5.4", ">= 5.4.2"
+gem 'rondo_form', '~> 0.2.1'
