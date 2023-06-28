@@ -4,8 +4,8 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
-
 import NestedRondoController from "./nested_rondo_controller"
 application.register("nested-rondo", NestedRondoController)
+
+import NavController from "./nav_controller"
+application.register("nav", NavController)

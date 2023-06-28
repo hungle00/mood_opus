@@ -9,6 +9,7 @@ class BoardsController < ApplicationController
 
   # GET /boards/1 or /boards/1.json
   def show
+    @embeds = @board.embeds
   end
 
   # GET /boards/new

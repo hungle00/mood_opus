@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CadenzaForm</title>
+    <title>Mood Opus</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +10,10 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body class="flex flex-col min-h-screen">
+    <header>
+      <%= render "shared/navbar" %>
+    </header>
     <main class="container mx-auto">
       <%= yield %>
     </main>

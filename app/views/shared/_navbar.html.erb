@@ -1,0 +1,30 @@
+<nav class="flex flex-wrap items-center justify-between py-3 text-gray-700 bg-white container mx-auto px-4" data-controller="nav">
+  <div class="flex items-center mr-5 flex-no-shrink">
+    <%= link_to root_path, class:"link text-xl tracking-tight font-black" do %>
+      <span class="sr-only">Kickstarter</span>
+      <%# Remove this logo and add your own %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3a23bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg>
+    <% end %>
+  </div>
+  <div class="block lg:hidden">
+    <%# Mobile nav toggle %>
+    <button class="flex items-center p-2 -mr-1 rounded-lg focus:bg-gray-100" data-action="click->nav#toggleMenu touch->nav#toggleMenu">
+      <svg class="stroke-current text-gray-500 w-7 h-7" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Menu</title><g fill="none"><path d="M4 6h16M4 12h8m-8 6h16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
+    </button>
+  </div>
+  <div class="items-center w-full text-center lg:flex-1 lg:flex lg:text-left pt-2 lg:pt-0 hidden" data-nav-target="menu">
+    <div class="lg:flex-grow">
+      <%= link_to "Opus Mood", boards_path, class: "p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100 lg:inline-block block" %>
+    </div>
+    <div class="items-center block w-full mt-2 text-center lg:flex lg:flex-row lg:flex-1 lg:mt-0 lg:text-left lg:justify-end">
+      <div><%# More links can go here %></div>
+      <% if user_signed_in? %>
+        <%= link_to "Edit account", edit_user_registration_path, class: "p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100 lg:inline-block block" %>
+        <%= button_to "Log out", destroy_user_session_path, method: :delete, class:"p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100 lg:inline-block block" %>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path, class:"p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100 lg:inline-block block" %> |
+        <%= link_to "Sign up", new_user_registration_path, class:"p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100 lg:inline-block block lg:ml-2" %>
+      <% end %>
+    </div>
+  </div>
+</nav>

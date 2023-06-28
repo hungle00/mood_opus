@@ -8,7 +8,7 @@
 
   <div class="grid md:grid-cols-4 grid-cols-2 gap-4 mt-4">
     <% @boards.each do |board| %>
-      <%= block_link_to board_path(board), class: 'rounded-lg border border-indigo-500 bg-white shadow-sm space-y-2 aspect-[4/3]' do %>
+      <%= link_to board, class: 'rounded-lg border border-indigo-500 bg-white shadow-sm space-y-2 aspect-[4/3]' do %>
         <p class="text-center text-xl font-bold leading-6 text-gray-800"><%= board.title %></p>
       <% end %>
     <% end %>

@@ -1,6 +1,14 @@
-<% @board.embeds.each do |embed| %>
-  <div class='rounded-lg border border-indigo-500 bg-white shadow-sm space-y-2 aspect-[4/3]'>  
-    <p class="text-center text-xl font-bold leading-6 text-gray-800 mt-2"><%= embed.title %></p>
-    <div class="text-center">Display media here</div>
+<%= render partial: "embeds/embed", collection: embeds, locals: { board: board } %>
+
+<div class='relative rounded-lg border border-indigo-500 bg-white shadow-sm space-y-2 aspect-[4/3] px-2'>
+  <div class="p-3 flex flex-col justify-around h-full w-full">
+    <button name="button" type="submit" class="border border-transparent rounded-full shadow-sm text-gray-300 bg-white hover:text-gray-400 focus:outline-none absolute right-2 top-2">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <input class="block my-1 w-full rounded shadow appearance-none border border-gray-300" type="text" name="new_embed"
+      placeholder="Enter an embeddable link">
+    <button class="btn-indigo focus:shadow-outline">Save</button>
   </div>
-<% end %>
+</div>

@@ -6,15 +6,7 @@
   </div>
 
   <div class="grid md:grid-cols-4 grid-cols-2 gap-4 mt-4">
-    <%= render @board %>
-
-    <div class='rounded-lg border border-indigo-500 bg-white shadow-sm space-y-2 aspect-[4/3] px-2'>
-      <div class="p-3 flex flex-col justify-around h-full w-full">
-        <input class="block my-1 w-full rounded shadow appearance-none border border-gray-300" type="text" name="new_embed"
-          placeholder="Enter an embeddable link">
-        <button class="btn-indigo focus:shadow-outline">Save</button>
-      </div>
-    </div>
+    <%= render @board, embeds: @embeds %>
   </div>
   
 
