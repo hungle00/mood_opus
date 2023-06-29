@@ -12,3 +12,6 @@ application.register("nav", NavController)
 
 import RemovalsController from "./removals_controller"
 application.register("removals", RemovalsController)
+
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
