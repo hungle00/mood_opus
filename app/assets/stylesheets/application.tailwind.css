@@ -12,6 +12,10 @@
   .btn-indigo {
     @apply px-4 py-2 text-sm font-medium rounded-md bg-indigo-500 text-white cursor-pointer hover:bg-indigo-600;
   }
+
+  .flash {
+    @apply pl-4 py-4 text-white border-l-4 bg-opacity-80 shadow-lg rounded max-w-sm w-full;
+  }
 }
 
 

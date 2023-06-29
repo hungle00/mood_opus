@@ -1,0 +1,9 @@
+<% flash.each do |flash_type, message| %>
+  <div class="fixed z-30 inset-x-0 top-5 m-4">
+    <div class="flex justify-end">
+      <%= tag.div class: "flash #{flash_classes(flash_type)}", data: { controller: "removals" } do %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

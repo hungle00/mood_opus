@@ -1,7 +1,6 @@
-# README
+# Mood Opus
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Mood Opus is a media design moodboard where you can upload audio and image files, embeds Youtube and Bilibili,... links.
 
 Things you may want to cover:
 

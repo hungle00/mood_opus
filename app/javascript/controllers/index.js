@@ -9,3 +9,6 @@ application.register("nested-rondo", NestedRondoController)
 
 import NavController from "./nav_controller"
 application.register("nav", NavController)
+
+import RemovalsController from "./removals_controller"
+application.register("removals", RemovalsController)

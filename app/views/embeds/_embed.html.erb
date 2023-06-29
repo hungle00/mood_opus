@@ -1,4 +1,9 @@
-<%= link_to [embed.board, embed], class: 'rounded-lg border border-indigo-500 bg-white shadow-sm space-y-2 aspect-[4/3]' do %>
-  <p class="text-center text-xl font-bold leading-6 text-gray-800 mt-2"><%= embed.title %></p>
-  <div class="text-center">Display media here</div>
-<% end %>
+<div class="rounded-lg border border-slate-200 bg-white shadow-sm aspect-[4/3] flex flex-col">
+  <div class="w-full">
+    <%= image_tag 'default.jpg', class: 'w-full h-full rounded-t-lg' %>
+  </div>
+  <div class="text-gray-800 p-2 relative">
+    <%= link_to '', [embed.board, embed], class: 'w-full h-full absolute' %>
+    <p class="text-lg font-bold leading-6 "><%= embed.title %></p>
+  </div>
+</div>
