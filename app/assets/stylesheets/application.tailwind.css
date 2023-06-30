@@ -4,13 +4,13 @@
 
 @layer base {
   h1 {
-	@apply text-2xl font-bold leading-7 text-gray-800 md:text-3xl md:truncate;
+    @apply text-2xl font-bold leading-7 text-gray-800 md:text-3xl md:truncate;
   }
 }
 
 @layer components {
-  .btn-indigo {
-    @apply px-4 py-2 text-sm font-medium rounded-md bg-indigo-500 text-white cursor-pointer hover:bg-indigo-600;
+  .btn-primary {
+    @apply px-4 py-2 text-sm font-medium rounded-md bg-red-500 text-white cursor-pointer hover:bg-red-600;
   }
 
   .flash {

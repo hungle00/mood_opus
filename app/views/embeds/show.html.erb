@@ -1,2 +1,6 @@
-<h1><%= @embed.title %></h1>
-<p><%= @embed.embeddable.url %><p>
+<div class="">
+  <h1><%= @embed.title %></h1>
+  <div class="my-2 h-screen">
+	  <%= iframe_media_tag(@embed.embeddable.embed_link_url, class_names: "w-1/2 h-1/2") %>
+  </div>
+</div>

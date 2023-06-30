@@ -14,7 +14,7 @@ SimpleForm.setup do |config|
   config.boolean_style = :inline
 
   # Default class for buttons
-  config.button_class = 'px-4 py-2 text-sm font-medium rounded-md bg-indigo-500 text-white cursor-pointer focus:shadow-outline hover:bg-indigo-600'
+  config.button_class = 'px-4 py-2 text-sm font-medium rounded-md bg-red-500 text-white cursor-pointer focus:shadow-outline hover:bg-red-600'
 
   # Series of attempts to detect a default label method for collection.
   # config.collection_label_methods = [ :to_label, :name, :title, :to_s ]

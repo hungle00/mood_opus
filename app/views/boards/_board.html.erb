@@ -1,6 +1,6 @@
 <%= render partial: "embeds/embed", collection: embeds, locals: { board: board } %>
 
-<div class='rounded-lg border border-slate-200 bg-white shadow-sm aspect-[4/3] px-2 relative'>
+<div class='rounded-lg border border-slate-200 shadow-lg hover:shadow-xl bg-white aspect-[4/3] px-2 relative'>
   <div class="p-3 flex flex-col justify-around h-full w-full">
     <button name="button" type="submit" class="border border-transparent rounded-full shadow-sm text-gray-300 bg-white hover:text-gray-400 focus:outline-none absolute right-2 top-2">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5">
@@ -9,6 +9,6 @@
     </button>
     <input class="block my-1 w-full rounded shadow appearance-none border border-gray-300" type="text" name="new_embed"
       placeholder="Enter an embeddable link">
-    <button class="btn-indigo focus:shadow-outline">Save</button>
+    <button class="btn-primary focus:shadow-outline">Save</button>
   </div>
 </div>

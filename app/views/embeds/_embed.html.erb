@@ -1,6 +1,6 @@
-<div class="rounded-lg border border-slate-200 bg-white shadow-sm aspect-[4/3] flex flex-col">
+<div class="rounded-lg border border-slate-200 shadow-lg hover:shadow-xl bg-white aspect-[4/3] flex flex-col">
   <div class="w-full">
-    <%= image_tag 'default.jpg', class: 'w-full h-full rounded-t-lg' %>
+    <%= iframe_media_tag(embed.embeddable.embed_link_url, class_names: "w-full h-full") %>
   </div>
   <div class="text-gray-800 p-2 relative">
     <%= link_to '', [embed.board, embed], class: 'w-full h-full absolute' %>
