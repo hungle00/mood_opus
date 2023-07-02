@@ -1,6 +1,10 @@
 <div class="rounded-lg border border-slate-200 shadow-lg hover:shadow-xl bg-white aspect-[4/3] flex flex-col">
   <div class="w-full">
-    <%= iframe_media_tag(embed.embeddable.embed_link_url, class_names: "w-full h-full") %>
+    <% if embed.embeddable_type == "EmbedLink" %>
+      <%= iframe_media_tag(embed.embeddable.embed_link_url, class_names: "w-full h-full") %>
+    <% else %>
+      <%= image_tag embed.embeddable.media_file, class: "w-full h-full" %>
+    <% end %>
   </div>
   <div class="text-gray-800 p-2 relative">
     <%= link_to '', [embed.board, embed], class: 'w-full h-full absolute' %>

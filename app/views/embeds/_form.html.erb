@@ -1,4 +1,4 @@
-<%= simple_form_for([@board, embed], data: {turbo: false}) do |f| %>
+<%= simple_form_for([@board, embed], data: {turbo: false}, html: { multipart: true }) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -8,6 +8,10 @@
 
   <div class="form-inputs">
     <%= f.input :input, label: 'Link' %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.file_field :media_file %>
   </div>
 
   <div class="flex justify-end items-center flex-wrap mt-6">

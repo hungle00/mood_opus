@@ -12,14 +12,19 @@
 #
 class Embed < ApplicationRecord
   belongs_to :board
-  delegated_type :embeddable, types: %w(EmbedLink)
-
+  delegated_type :embeddable, types: %w(EmbedLink MediaAsset)
+  delegate :users, to: :board
+ 
   attribute :input, :string
   validates :input, presence: true, on: :create
 
   after_initialize do
     next if persisted?
 
-    self.embeddable = EmbedLink.new(url: input)
+    if input&.start_with? "http"
+      self.embeddable = EmbedLink.new(url: input)
+    else
+      self.embeddable = MediaAsset.new(media_file: input)
+    end
   end
 end

@@ -12,6 +12,7 @@ class EmbedsController < ApplicationController
 
   def create
     @embed = @board.embeds.build(embed_params)
+    # @embed = MediaAsset.new(embed_params)
     if @embed.save
       redirect_to board_url(@board), notice: "Board was successfully created."
     else
@@ -41,6 +42,6 @@ class EmbedsController < ApplicationController
   end
 
   def embed_params
-    params.require(:embed).permit(:title, :input)
+    params.require(:embed).permit(:title, :input, :media_file)
   end
 end
