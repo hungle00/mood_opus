@@ -21,7 +21,6 @@ export default class extends Controller {
   }
 
   closeOutside(e) {
-    console.log(e.target)
     if(e && this.modalTarget == e.target) {
       this.hideModal()
     }

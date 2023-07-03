@@ -4,14 +4,17 @@
 
 import { application } from "./application"
 
-import NestedRondoController from "./nested_rondo_controller"
-application.register("nested-rondo", NestedRondoController)
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
 
 import NavController from "./nav_controller"
 application.register("nav", NavController)
 
+import NestedRondoController from "./nested_rondo_controller"
+application.register("nested-rondo", NestedRondoController)
+
 import RemovalsController from "./removals_controller"
 application.register("removals", RemovalsController)
 
-import ModalController from "./modal_controller"
-application.register("modal", ModalController)
+import TabsController from "./tabs_controller"
+application.register("tabs", TabsController)

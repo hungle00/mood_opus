@@ -1,13 +1,14 @@
-<div class="rounded-lg border border-slate-200 shadow-lg hover:shadow-xl bg-white aspect-[4/3] flex flex-col">
-  <div class="w-full">
+<div class="rounded-lg border border-slate-200 shadow-lg hover:shadow-xl bg-white aspect-w-4 aspect-h-3"> 
+  <div class="flex flex-col">
     <% if embed.embeddable_type == "EmbedLink" %>
-      <%= iframe_media_tag(embed.embeddable.embed_link_url, class_names: "w-full h-full") %>
+      <%= render 'embeds/embed_link', embed: embed %>
     <% else %>
-      <%= image_tag embed.embeddable.media_file, class: "w-full h-full" %>
+      <%= render 'embeds/embed_image', embed: embed %>
     <% end %>
+    <div class="text-gray-800 p-2 relative">
+      <%= link_to '', [embed.board, embed], class: 'w-full h-full absolute' %>
+      <p class="text-lg font-bold leading-6 "><%= embed.title %></p>
+    </div>
   </div>
-  <div class="text-gray-800 p-2 relative">
-    <%= link_to '', [embed.board, embed], class: 'w-full h-full absolute' %>
-    <p class="text-lg font-bold leading-6 "><%= embed.title %></p>
-  </div>
+
 </div>

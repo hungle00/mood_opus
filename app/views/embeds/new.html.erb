@@ -1,21 +1,31 @@
 <%= turbo_frame_tag "modal" do %>
-	<div data-controller="modal"  data-action="turbo:submit-end->modal#submitEnd click@window->modal#closeOutside">
-		<div data-modal-target="modal" class="animated fadeIn fixed inset-0 overflow-y-auto flex items-center justify-center" style="z-index: 99;">
-			<!-- Modal Inner Container -->
-			<div class="max-h-screen w-full max-w-lg relative">
-				<button data-action="click->modal#hideModal" class="border border-transparent rounded-full shadow-sm text-gray-300 bg-white hover:text-gray-400 focus:outline-none absolute right-3 top-3" >
-		      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
-		        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-		      </svg>
-		    </button>
-			  <!-- Modal Card -->
-			  <div class="m-1 bg-white rounded shadow">
-			    <div class="p-6">
-			    	<h2 class="text-xl font-bold leading-6 my-3">New Embed</h2>
-	          <%= render "embeds/form", embed: @embed %>
-			    </div>
-			  </div>
-			</div>
-		</div>
-	</div>
+  <div data-controller="modal"  data-action="turbo:submit-end->modal#submitEnd click@window->modal#closeOutside">
+    <div data-modal-target="modal" class="animated fadeIn fixed inset-0 overflow-y-auto flex items-center justify-center" style="z-index: 99;">
+      <!-- Modal Inner Container -->
+      <div class="max-h-screen w-full max-w-lg relative">
+        <button data-action="click->modal#hideModal" class="border border-transparent rounded-full shadow-sm text-gray-300 bg-white hover:text-gray-400 focus:outline-none absolute right-3 top-3" >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <!-- Modal Card -->
+        <div class="m-1 bg-white rounded shadow">
+          <div class="p-6" data-controller="tabs">
+            <h2 class="text-xl font-bold leading-6 my-3">New Embed</h2>
+            <div class="flex gap-3 mb-2">
+              <div class="flex items-center" data-action="click->tabs#change" data-tabs-target="tab">
+                <input class=" mr-1" type="radio" name="embed_type" id="embed_link" >
+                <label for="embed_link">Embed Link</label>
+              </div>
+              <div class="flex items-center" data-action="click->tabs#change" data-tabs-target="tab">
+                <input class="mr-1" type="radio" name="embed_type" id="media_asset">
+                <label for="media_asset">Media Asset</label>
+              </div>
+            </div>
+            <%= render "embeds/form", embed: @embed %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>

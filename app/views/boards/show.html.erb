@@ -5,15 +5,34 @@
     <%= link_to "New embed", new_board_embed_path(@board), class: "btn-primary focus:shadow-outline", data: { turbo_frame: 'modal' } %>
   </div>
 
-  <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4 mt-4">
-    <%= render @board, embeds: @embeds %>
-  </div>
+  <% if @embeds.empty? %>
+    <div class="max-w-6xl mx-auto border-dashed border-2 flex flex-col items-center mt-4 py-3">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24" width="24" stroke="currentColor" class="w-10 h-10 text-gray-500">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+      </svg>
+      <p class="mt-2 font-bold">You don't have any boards yet</p>
+      <p class="text-gray-700 mb-4">Get started by creating a new quote.</p>
+      <%= link_to "New embed", new_board_embed_path(@board), class: "btn-primary focus:shadow-outline", data: { turbo_frame: 'modal' } %>
+    </div>
+  <% else %>
+    <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4 mt-4">
+      <%= render @board, embeds: @embeds %>
+    </div>
+  <% end %>
   
 
-  <div class="mt-4">
-    <%= link_to "Edit this board", edit_board_path(@board) %> |
-    <%= link_to "Back to boards", boards_path %>
-
-    <%= button_to "Destroy this board", @board, method: :delete %>
+  <div class="mt-10 flex gap-2">
+    <%= link_to edit_board_path(@board), class: "btn-outline flex items-center gap-1" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+      </svg>
+      <span>Edit</span>
+    <% end %>
+    <%= button_to @board, method: :delete, class: "btn-outline flex items-center gap-1", data: {turbo_confirm: 'Are you sure?'} do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9.75L14.25 12m0 0l2.25 2.25M14.25 12l2.25-2.25M14.25 12L12 14.25m-2.58 4.92l-6.375-6.375a1.125 1.125 0 010-1.59L9.42 4.83c.211-.211.498-.33.796-.33H19.5a2.25 2.25 0 012.25 2.25v10.5a2.25 2.25 0 01-2.25 2.25h-9.284c-.298 0-.585-.119-.796-.33z" />
+      </svg>
+      <span>Delete</span>
+    <% end %>
   </div>
 <div>

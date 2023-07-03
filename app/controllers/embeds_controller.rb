@@ -14,7 +14,7 @@ class EmbedsController < ApplicationController
     @embed = @board.embeds.build(embed_params)
     # @embed = MediaAsset.new(embed_params)
     if @embed.save
-      redirect_to board_url(@board), notice: "Board was successfully created."
+      redirect_to board_url(@board), notice: "Embed was successfully created."
     else
       redirect_to board_url(@board), alert: "Cant't create new embed"
     end

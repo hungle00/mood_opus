@@ -16,7 +16,8 @@ class Embed < ApplicationRecord
   delegate :users, to: :board
  
   attribute :input, :string
-  validates :input, presence: true, on: :create
+  attribute :media_file
+  # validates :input, presence: true, on: :create
 
   after_initialize do
     next if persisted?
@@ -24,7 +25,7 @@ class Embed < ApplicationRecord
     if input&.start_with? "http"
       self.embeddable = EmbedLink.new(url: input)
     else
-      self.embeddable = MediaAsset.new(media_file: input)
+      self.embeddable = MediaAsset.new(media_file: media_file)
     end
   end
 end
