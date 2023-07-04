@@ -10,6 +10,7 @@ class BoardsController < ApplicationController
   # GET /boards/1 or /boards/1.json
   def show
     @embeds = @board.embeds
+    @embeds = @embeds.filter_by_type(params[:type]) if params[:type].present?
   end
 
   # GET /boards/new

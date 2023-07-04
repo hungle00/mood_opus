@@ -6,14 +6,30 @@
     <%= f.input :title %>
   </div>
 
-  <h3 class="text-lg font-bold mt-5">Embeds</h3>
+  <div class="relative my-4">
+    <div class="absolute inset-0 flex items-center" aria-hidden="true">
+      <div class="w-full border-t border-gray-300"></div>
+    </div>
+    <div class="relative flex justify-center">
+      <span class="px-2 bg-white text-sm text-gray-500">
+        Embeds
+      </span>
+    </div>
+  </div>
 
   <div class="my-2" data-controller="nested-rondo">
-    <%= f.simple_fields_for :embeds do |embed| %>
-      <%= render "embed_fields", f: embed %>
-    <% end %>
-    <div class="links">
-      <%= link_to_add_association "Add Embed", f, :embeds %>
+    <div data-nested-rondo-target="fieldContain">
+      <%= f.simple_fields_for :embeds do |embed| %>
+        <%= render "embed_fields", f: embed %>
+      <% end %>
+    </div>
+    <div class="relative mt-2">
+      <div class="absolute inset-0 flex items-center" aria-hidden="true">
+        <div class="w-full border-t border-gray-300"></div>
+      </div>
+      <div class="relative flex justify-center">
+        <%= link_to_add_association "Add Embed", f, :embeds, class: "px-2 bg-white text-sm text-gray-500" %>
+      </div>
     </div>
   </div>
   

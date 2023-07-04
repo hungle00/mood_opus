@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import FilterController from "./filter_controller"
+application.register("filter", FilterController)
+
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
 

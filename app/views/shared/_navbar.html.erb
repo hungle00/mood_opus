@@ -15,17 +15,17 @@
     </div>
     <div class="items-center w-full text-center lg:flex-1 lg:flex lg:text-left pt-2 lg:pt-0 hidden" data-nav-target="menu">
       <div class="lg:flex-grow">
-        <%= link_to "Opus Mood", boards_path, class: "p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100 lg:inline-block block" %>
+        <%= link_to "Opus Mood", boards_path, class: "#{nav_active_class(boards_path)} p-3 transition ease duration-300 rounded-lg text-center lg:inline-block block" %>
       </div>
       <div class="items-center block w-full mt-2 text-center lg:flex lg:flex-row lg:flex-1 lg:mt-0 lg:text-left lg:justify-end">
         <div><%# More links can go here %></div>
         <% if user_signed_in? %>
-          <%= link_to "Edit account", edit_user_registration_path, class: "p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100 lg:inline-block block" %>
+          <%= link_to "Edit account", edit_user_registration_path, class: "#{nav_active_class(edit_user_registration_path)} p-3 transition ease duration-300 rounded-lg text-center lg:inline-block block" %>
           <%= link_to 'Log out', destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'},
-            class: "p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100 lg:inline-block block" %>
+            class: "link-underline p-3 transition ease duration-300 rounded-lg text-center lg:inline-block block" %>
         <% else %>
-          <%= link_to "Sign in", new_user_session_path, class:"p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100 lg:inline-block block" %> |
-          <%= link_to "Sign up", new_user_registration_path, class:"p-3 hover:bg-gray-50 transition ease duration-300 rounded-lg text-center focus:bg-gray-100 lg:inline-block block lg:ml-2" %>
+          <%= link_to "Sign in", new_user_session_path, class:"link-underline p-3 transition ease duration-300 rounded-lg text-center lg:inline-block block" %> |
+          <%= link_to "Sign up", new_user_registration_path, class:"link-underline p-3 transition ease duration-300 rounded-lg text-center lg:inline-block block lg:ml-2" %>
         <% end %>
       </div>
     </div>

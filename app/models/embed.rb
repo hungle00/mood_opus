@@ -18,6 +18,7 @@ class Embed < ApplicationRecord
   attribute :input, :string
   attribute :media_file
   # validates :input, presence: true, on: :create
+  scope :filter_by_type, ->(type) { where(embeddable_type: type) }
 
   after_initialize do
     next if persisted?
