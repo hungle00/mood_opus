@@ -12,16 +12,14 @@
         <div class="m-1 bg-white rounded shadow">
           <div class="p-6" data-controller="tabs">
             <h2 class="text-xl font-bold leading-6 my-3">New Embed</h2>
-            <div class="flex gap-3 mb-2">
-              <div class="flex items-center" data-action="click->tabs#change" data-tabs-target="tab">
-                <input class=" mr-1" type="radio" name="embed_type" id="embed_link" >
-                <label for="embed_link">Embed Link</label>
-              </div>
-              <div class="flex items-center" data-action="click->tabs#change" data-tabs-target="tab">
-                <input class="mr-1" type="radio" name="embed_type" id="media_asset">
-                <label for="media_asset">Media Asset</label>
-              </div>
-            </div>
+              <ul class="flex flex-wrap mb-4">
+                <li class="mr-2 active-tab" data-action="click->tabs#change" data-tabs-target="tab">
+                  <a href="#" class="inline-block text-gray-800 rounded-t-lg pr-4 py-3 text-sm font-medium text-center">Embed Link</a>
+                </li>
+                <li class="mr-2" data-action="click->tabs#change" data-tabs-target="tab">
+                  <a href="#" class="inline-block text-gray-800 rounded-t-lg pr-4 py-3 text-sm font-medium text-center">Media Asset</a>
+                </li>
+              </ul>
             <%= render "embeds/form", embed: @embed %>
           </div>
         </div>

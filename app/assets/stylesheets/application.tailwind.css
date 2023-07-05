@@ -20,6 +20,10 @@
   .flash {
     @apply pl-4 py-4 text-white border-l-4 bg-opacity-80 shadow-lg rounded max-w-sm w-full;
   }
+
+  .active-tab {
+    @apply underline underline-offset-8 decoration-red-500 decoration-4
+  }
 }
 
 

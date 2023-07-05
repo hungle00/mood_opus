@@ -1,0 +1,27 @@
+<div class="w-full md:w-1/2 mx-auto p-4" data-controller="tabs">
+  <ul class="flex flex-wrap mb-4">
+    <li class="mr-2 active-tab">
+      <%= link_to "Edit account", edit_profile_path, class: "inline-block text-gray-800 hover:bg-red-100 rounded-t-lg py-4 px-4 text-sm font-medium text-center" %>
+    </li>
+    <li class="mr-2 inactive">
+      <%= link_to "Edit password", edit_user_registration_path, class: "inline-block text-gray-800 hover:bg-red-100 rounded-t-lg py-4 px-4 text-sm font-medium text-center" %>
+    </li>
+  </ul>
+
+  <%= simple_form_for(current_user, url: profile_path) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="mb-3">
+      <%= f.input :email %>
+      <%= f.input :name, label: 'Profile name' %>
+      <%= f.input :avatar %>
+
+
+      <div class="form-actions my-2">
+        <%= f.button :submit, "Update" %>
+      </div>
+    </div>
+
+  <% end %>
+</div>

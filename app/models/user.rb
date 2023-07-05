@@ -24,4 +24,5 @@ class User < ApplicationRecord
 
   has_many :board_memberships
   has_many :boards, through: :board_memberships
+  has_one_attached :avatar
 end

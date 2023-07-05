@@ -109,6 +109,19 @@ SimpleForm.setup do |config|
     b.use :full_error, wrap_with: { tag: :span, class: "block text-red-500 text-xs italic" }
   end
 
+  # vertical file input
+  config.wrappers :f_file, tag: 'div', class: '' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :readonly
+    b.use :label, class: 'text-sm font-medium text-gray-600 block', error_class: 'text-red-500'
+    b.use :input, class: 'w-full text-gray-500 px-3 py-2 border rounded', error_class: 'text-red-500 border-red-500', valid_class: 'text-green-400'
+    b.use :full_error, wrap_with: { tag: 'p', class: 'mt-2 text-red-500 text-xs italic' }
+    b.use :hint, wrap_with: { tag: 'p', class: 'mt-2 text-grey-700 text-xs italic' }
+  end
+
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :vertical_input
 
@@ -121,7 +134,8 @@ SimpleForm.setup do |config|
     { 
       boolean:        :f_boolean,
       radio_buttons:  :f_collection,
-      check_boxes:    :f_collection 
+      check_boxes:    :f_collection,
+      file:           :f_file
     }
 
   # Define the default class of the input wrapper of the boolean input.

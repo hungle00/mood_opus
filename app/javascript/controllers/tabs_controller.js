@@ -19,9 +19,9 @@ export default class extends Controller {
     this.fieldTargets.forEach((el, index) => {
       index == this.indexValue ? el.classList.remove("hidden") : el.classList.add("hidden")
     })
+
     this.tabTargets.forEach((el, index) => {
-      let childInput = el.querySelector("input[type='radio'")
-      index == this.indexValue ? childInput.checked = true : childInput.checked = false
+      index == this.indexValue ? el.classList.add("active-tab") : el.classList.remove("active-tab")   
     })
   }
 }
