@@ -1,33 +1,51 @@
-<nav class="text-gray-700 bg-white shadow-md" data-controller="nav">
-  <div class="container flex flex-wrap items-center justify-between py-2 mx-auto px-4">
-    <div class="flex items-center mr-5 flex-no-shrink">
-      <%= link_to root_path, class:"link text-xl tracking-tight font-black" do %>
-        <span class="sr-only">Kickstarter</span>
-        <%# Remove this logo and add your own %>
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3a23bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg>
+<nav class="border-gray-200 bg-white border-b">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-2">
+    <div class="flex justify-between">
+      <div class="flex">
+        <div class="flex-shrink-0 flex items-center py-1">
+          <a href="/">
+            <span class="sr-only">Kickstarter</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3a23bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <% if user_signed_in? %>
+        <div class="md:ml-6 md:flex sm:items-center">
+          <div class="hidden md:ml-6 md:flex md:space-x-4">
+            <a class="text-sm border-transparent hover:border-red-400 hover:text-gray-700 inline-flex items-center px-2 pb-1 pt-2 border-b-2 font-medium text-gray-900" href="#">Dashboard</a>
+            <%= link_to "Opus Mood", boards_path, class: "text-sm border-transparent hover:border-red-400 hover:text-gray-700 inline-flex items-center px-2 pb-1 pt-2 border-b-2 font-medium text-gray-900" %>
+          </div>
+          <div class="flex items-center md:ml-1 gap-1">
+            <a class="ml-3 bg-white p-1 rounded-full text-gray-400 relative hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-gold-500" href="#">
+              <span class="sr-only">View notifications</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" role="img" aria-labelledby="ajn1qw9e47lr8py9z13aaqoypca46aw7" class="h-6 w-6">
+                <title id="ajn1qw9e47lr8py9z13aaqoypca46aw7">Notifications icon</title>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+              </svg>
+            </a>
+            <div class="ml-3 relative" data-controller="nav" data-action="nav:click:outside->nav#off" data-nav-visible-value="false">
+              <div>
+                <button type="button" data-action="click->nav#toggleMenu" class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gold-500 dark:focus:ring-offset-gray-900" aria-expanded="false" aria-haspopup="true">
+                <span class="sr-only">Open user menu</span>
+                <%= current_user_avatar %>
+                </button>
+              </div>
+              <div data-nav-target="menu" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50 hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                <%= link_to "Edit account", edit_profile_path, class: "text-gray-700 group flex items-center px-3 py-2 text-sm" %>
+                <%= link_to 'Log out', destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'},
+                  class: "text-gray-700  group flex items-center px-3 py-2 text-sm" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="flex gap-2">
+          <%= link_to "Sign in", new_user_session_path, class:"text-sm border-transparent hover:border-red-400 hover:text-gray-700 inline-flex items-center px-2 pb-1 pt-2 border-b-2 font-medium text-gray-900" %>
+          <%= link_to "Sign up", new_user_registration_path, class:"text-sm border-transparent hover:border-red-400 hover:text-gray-700 inline-flex items-center px-2 pb-1 pt-2 border-b-2 font-medium text-gray-900" %>
+        </div>
       <% end %>
-    </div>
-    <div class="block lg:hidden">
-      <%# Mobile nav toggle %>
-      <button class="flex items-center p-2 -mr-1 rounded-lg focus:bg-gray-100" data-action="click->nav#toggleMenu touch->nav#toggleMenu">
-        <svg class="stroke-current text-gray-500 w-7 h-7" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Menu</title><g fill="none"><path d="M4 6h16M4 12h8m-8 6h16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
-      </button>
-    </div>
-    <div class="items-center w-full text-center lg:flex-1 lg:flex lg:text-left pt-2 lg:pt-0 hidden" data-nav-target="menu">
-      <div class="lg:flex-grow">
-        <%= link_to "Opus Mood", boards_path, class: "#{nav_active_class(boards_path)} p-3 transition ease duration-300 rounded-lg text-center lg:inline-block block" %>
-      </div>
-      <div class="items-center block w-full mt-2 text-center lg:flex lg:flex-row lg:flex-1 lg:mt-0 lg:text-left lg:justify-end">
-        <div><%# More links can go here %></div>
-        <% if user_signed_in? %>
-          <%= link_to "Edit account", edit_user_registration_path, class: "#{nav_active_class(edit_user_registration_path)} p-3 transition ease duration-300 rounded-lg text-center lg:inline-block block" %>
-          <%= link_to 'Log out', destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'},
-            class: "link-underline p-3 transition ease duration-300 rounded-lg text-center lg:inline-block block" %>
-        <% else %>
-          <%= link_to "Sign in", new_user_session_path, class:"link-underline p-3 transition ease duration-300 rounded-lg text-center lg:inline-block block" %> |
-          <%= link_to "Sign up", new_user_registration_path, class:"link-underline p-3 transition ease duration-300 rounded-lg text-center lg:inline-block block lg:ml-2" %>
-        <% end %>
-      </div>
     </div>
   </div>
 </nav>

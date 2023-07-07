@@ -24,6 +24,9 @@
   .active-tab {
     @apply underline underline-offset-8 decoration-red-500 decoration-4
   }
+  .avatar {
+    @apply rounded-full h-24 w-24 shadow-inner
+  }
 }
 
 

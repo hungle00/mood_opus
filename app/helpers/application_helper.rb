@@ -6,7 +6,11 @@ module ApplicationHelper
     }.stringify_keys[flash_type.to_s] || flash_type.to_s
   end
 
-  def nav_active_class(path)
-    "underline underline-offset-8 decoration-red-500 decoration-4 " if current_page?(path)
+  def current_user_avatar
+    if current_user.avatar.attached?
+      image_tag(current_user.avatar, class: "avatar h-9 w-9")
+    else
+      image_tag('https://avatars.githubusercontent.com/u/39127302?v=4', class: "avatar h-9 w-9")
+    end
   end
 end
