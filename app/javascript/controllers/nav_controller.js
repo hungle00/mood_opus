@@ -11,8 +11,6 @@ export default class extends Controller {
 
   toggleMenu(event) {
     event.preventDefault()
-    console.log(this.visibleValue)
-    console.log(this.menuTarget)
     if (!this.visibleValue) {
       this.menuTarget.classList.remove("hidden");
       console.log(this.menuTarget)

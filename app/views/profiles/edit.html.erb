@@ -1,4 +1,4 @@
-<div class="w-full md:w-1/2 mx-auto py-3 px-5 bg-white mt-4 shadow rounded-lg">
+<div class="w-full lg:w-1/2 mx-auto py-3 px-5 bg-white mt-4 shadow rounded-lg">
   <ul class="flex flex-wrap mb-4">
     <li class="mr-2 active-tab">
       <%= link_to "Edit account", edit_profile_path, class: "inline-block text-gray-800 hover:bg-red-100 rounded-t-lg py-4 px-4 text-sm font-medium text-center" %>
@@ -16,11 +16,13 @@
       <%= f.input :email %>
       <%= f.input :name, label: 'Profile name' %>
 
-      <div class="flex gap-4 items-center mt-3 mb-4">
-        <% if current_user.avatar.attached? %>
-          <%= image_tag current_user.avatar, class: "avatar" %>
-        <% end %>
-        <%= f.input :avatar %>
+      <div class="flex gap-4 items-center mt-3 mb-4" data-controller="preview">
+        <div data-preview-target="content">
+          <% if current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar, class: "avatar" %>
+          <% end %>
+        </div>
+        <%= f.input :avatar, input_html: { data: { action: "preview#showImage" } } %>
       </div>
 
       <div class="form-actions">

@@ -1,6 +1,6 @@
 class EmbedsController < ApplicationController
-  before_action :set_embed, only: [:show, :edit, :destroy]
-  before_action :set_board, only: [:new, :create, :edit]
+  before_action :set_embed, only: [:show, :edit, :update, :destroy]
+  before_action :set_board
   before_action :authenticate_user!
 
   def show
@@ -23,10 +23,18 @@ class EmbedsController < ApplicationController
   def edit
   end
 
+  def update
+    if @embed.update(title: params[:embed][:title])
+      redirect_to @board, notice: "Embed was successfully updated."
+    else
+      redirect_to @board, alert: "Cant't update new embed"
+    end
+  end
+
   def destroy
     @embed.destroy
     respond_to do |format|
-      format.html { redirect_to embeds_url, notice: 'Embed was successfully destroyed.' }
+      format.html { redirect_to @board, notice: 'Embed was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

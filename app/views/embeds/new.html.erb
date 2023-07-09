@@ -11,16 +11,20 @@
         <!-- Modal Card -->
         <div class="m-1 bg-white rounded shadow">
           <div class="p-6" data-controller="tabs">
-            <h2 class="text-xl font-bold leading-6 my-3">New Embed</h2>
-              <ul class="flex flex-wrap mb-4">
-                <li class="mr-2 active-tab" data-action="click->tabs#change" data-tabs-target="tab">
-                  <a href="#" class="inline-block text-gray-800 rounded-t-lg pr-4 py-3 text-sm font-medium text-center">Embed Link</a>
-                </li>
-                <li class="mr-2" data-action="click->tabs#change" data-tabs-target="tab">
-                  <a href="#" class="inline-block text-gray-800 rounded-t-lg pr-4 py-3 text-sm font-medium text-center">Media Asset</a>
-                </li>
-              </ul>
-            <%= render "embeds/form", embed: @embed %>
+            <ul class="flex flex-wrap mb-4">
+              <li class="mr-2 active-tab" data-action="click->tabs#change" data-tabs-target="tab">
+                <a href="#" class="inline-block text-gray-800 rounded-t-lg pr-4 py-3 text-sm font-medium text-center">Embed Link</a>
+              </li>
+              <li class="mr-2" data-action="click->tabs#change" data-tabs-target="tab">
+                <a href="#" class="inline-block text-gray-800 rounded-t-lg pr-4 py-3 text-sm font-medium text-center">Media Asset</a>
+              </li>
+            </ul>
+            <div data-tabs-target="field">
+              <%= render "embeds/embed_form", embed: @embed %>
+            </div>
+            <div data-tabs-target="field">
+              <%= render "embeds/upload_form", embed: @embed %>
+            </div>
           </div>
         </div>
       </div>

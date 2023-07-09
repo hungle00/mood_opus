@@ -21,3 +21,6 @@ application.register("removals", RemovalsController)
 
 import TabsController from "./tabs_controller"
 application.register("tabs", TabsController)
+
+import PreviewController from "./preview_controller"
+application.register("preview", PreviewController)

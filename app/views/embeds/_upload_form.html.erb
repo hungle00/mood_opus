@@ -1,0 +1,40 @@
+<%= simple_form_for([@board, embed], data: {turbo: false}, html: { multipart: true }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="mt-2">
+    <% if embed.embeddable.media_file.attached? %>
+      <%= image_tag embed.embeddable.media_file, class: "h-48 w-auto mx-auto" %>
+    <% else %>
+      <label class="text-gray-700 mb-2 string optional text-sm font-medium">File Upload</label>
+      <div class="flex items-center justify-center w-full mt-2" data-controller="preview"
+        data-preview-class="h-40">
+        <div data-preview-target="content" class="h-40"></div>
+        <label data-preview-target="zone"
+          class="flex flex-col w-full h-32 border-2 border-red-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
+          <div class="flex flex-col items-center justify-center pt-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-400 group-hover:text-gray-600"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+            </svg>
+            <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
+              Attach a file
+            </p>
+          </div>
+          <%= f.file_field :media_file, class: "opacity-0", data: { action: "preview#showImage" } %>
+        </label>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="p-2">
+    <%= f.text_field :title, placeholder: "Title", require: true,
+      class: "block w-full p-1 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black" %>
+  </div>
+
+  <div class="flex justify-end items-center flex-wrap mt-6">
+    <button class="btn-primary" >Save</button>
+  </div>
+<% end %>
+

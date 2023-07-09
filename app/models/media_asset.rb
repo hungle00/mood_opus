@@ -10,4 +10,5 @@ class MediaAsset < ApplicationRecord
   has_one :embed, as: :embeddable, touch: true
 
   has_one_attached :media_file
+  validates :media_file, presence: true
 end
