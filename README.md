@@ -1,23 +1,37 @@
 # Mood Opus
 
-Mood Opus is a media design moodboard where you can upload audio and image files, embeds Youtube and Bilibili,... links.
+Mood Opus is a multimedia moodboard where you can upload audio and image files, or embeds Youtube and Bilibili,... links.
 
-Things you may want to cover:
+Mood Opus is a useful tool if you want:
 
-* Ruby version
+- Collect media links based on favorite topics from multiple social media platform link Youtube, Bili, ...
+- Create a media moodboard for your current mood and sharing with your friends.
 
-* System dependencies
+## Screenshot
+![Mood Opus Board](/screenshots/mood_opus_1.png)
 
-* Configuration
+![Mood Opus Upload](/screenshots/mood_opus_2.png) 
 
-* Database creation
+## Development
 
-* Database initialization
+### Techstack 
+- Ruby 3 + Rails 7
+- Hotwire ( Turbo + Stimulus )
+- Tailwindcss
+- NodeJS + ESbuild
+- Sqlite 3 (current) / Postgresql ( will change in future ) 
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Setup
+Install Ruby and Javascript dependencies:
+```
+bundle install
+yarn install
+```
+Database migration:
+```
+rails db:migrate
+```
+Start server:
+```
+./bin/dev
+```

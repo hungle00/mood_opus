@@ -1,13 +1,15 @@
-<div class="max-w-3xl mx-auto min-h-screen mt-2 bg-white py-10 px-3 sm:px-6 lg:px-8 space-y-3 md:space-y-4 shadow-md">
+<div class="max-w-3xl mx-auto min-h-screen mt-2 bg-white py-8 px-3 sm:px-6 lg:px-8 space-y-3 md:space-y-4 shadow-md">
+  <%= link_to boards_path do %>
+    <div class="flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="h-6 w-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"></path>
+      </svg>
+      <span>Board</span>
+    </div>
+  <% end %>
   <h1>New board</h1>
 
   <div class="w-full mt-2">
     <%= render "form", board: @board %>
-  </div>
-
-  <hr>
-
-  <div>
-    <%= link_to "Back to boards", boards_path %>
   </div>
 </div>
