@@ -1,12 +1,11 @@
-<div class="max-w-6xl mx-auto mt-4 px-2 ">
-
-  <div class="flex justify-between">
+<div class="max-w-7xl mx-auto mt-4 px-2 ">
+  <div class="flex justify-between md:mx-4">
     <h1><%= @board.title %></h1>
     <%= link_to "New embed", new_board_embed_path(@board), class: "btn-primary focus:shadow-outline", data: { turbo_frame: 'modal' } %>
   </div>
 
   <% if @embeds.empty? %>
-    <div class="max-w-6xl mx-auto border-dashed border-2 flex flex-col items-center mt-4 py-3">
+    <div class="border-dashed border-2 flex flex-col items-center mt-4 py-3">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24" width="24" stroke="currentColor" class="w-10 h-10 text-gray-500">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
       </svg>
@@ -15,7 +14,7 @@
       <%= link_to "New embed", new_board_embed_path(@board), class: "btn-primary focus:shadow-outline", data: { turbo_frame: 'modal' } %>
     </div>
   <% else %>
-    <div class="flex gap-4 mt-5">
+    <div class="flex gap-4 mt-5 md:mx-4">
       <div class="flex items-center" data-controller="filter">
         <button type="button" role="checkbox" class="<%= filter_active_for?('EmbedLink') ? 'bg-red-500' : 'bg-gray-300' %> relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" data-action="click->filter#toggle" data-type="EmbedLink" data-active="<%= filter_active_for?('EmbedLink') %>">
           <span class="sr-only">Use setting</span>
@@ -35,13 +34,13 @@
         </span>
       </div>
     </div>
-    <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4 mt-5">
+    <div class="board-grid my-5">
       <%= render @board, embeds: @embeds %>
     </div>
   <% end %>
   
 
-  <div class="mt-10 flex gap-2">
+  <div class="mt-10 mb-4 flex gap-2">
     <%= link_to edit_board_path(@board), class: "btn-outline flex items-center gap-1" do %>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
         <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />

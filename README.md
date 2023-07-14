@@ -20,6 +20,7 @@ Mood Opus is a useful tool if you want:
 - Tailwindcss
 - NodeJS + ESbuild
 - Sqlite 3 (current) / Postgresql ( will change in future ) 
+- libvips ( image processing library )
 
 ### Setup
 Install Ruby and Javascript dependencies:
