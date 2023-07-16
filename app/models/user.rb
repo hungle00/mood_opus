@@ -25,4 +25,8 @@ class User < ApplicationRecord
   has_many :board_memberships
   has_many :boards, through: :board_memberships
   has_one_attached :avatar
+
+  def display_name
+    name.presence || email.split("@").first
+  end
 end

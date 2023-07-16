@@ -1,17 +1,20 @@
 <div class="max-w-7xl mx-auto mt-4 px-2 ">
   <div class="flex justify-between md:mx-4">
     <h1><%= @board.title %></h1>
-    <%= link_to "New embed", new_board_embed_path(@board), class: "btn-primary focus:shadow-outline", data: { turbo_frame: 'modal' } %>
+    <div class="mt-2 flex gap-2">
+      <%= link_to "Add embed", new_board_embed_path(@board), class: "btn-primary focus:shadow-outline", data: { turbo_frame: 'embed_modal' } %>
+      <%= link_to "Add member", new_board_membership_path(@board), class: "btn-primary", data: { turbo_frame: 'membership_modal' } %>
+    </div>
   </div>
 
   <% if @embeds.empty? %>
-    <div class="border-dashed border-2 flex flex-col items-center mt-4 py-3">
+    <div class="border-dashed border-2 flex flex-col items-center mt-4 py-3 md:mx-4">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24" width="24" stroke="currentColor" class="w-10 h-10 text-gray-500">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
       </svg>
       <p class="mt-2 font-bold">You don't have any boards yet</p>
       <p class="text-gray-700 mb-4">Get started by creating a new quote.</p>
-      <%= link_to "New embed", new_board_embed_path(@board), class: "btn-primary focus:shadow-outline", data: { turbo_frame: 'modal' } %>
+      <%= link_to "New embed", new_board_embed_path(@board), class: "btn-primary focus:shadow-outline", data: { turbo_frame: 'embed_modal' } %>
     </div>
   <% else %>
     <div class="flex gap-4 mt-5 md:mx-4">

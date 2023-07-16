@@ -1,4 +1,4 @@
-<%= turbo_frame_tag "modal" do %>
+<%= turbo_frame_tag "embed_modal" do %>
   <div data-controller="modal"  data-action="turbo:submit-end->modal#submitEnd click@window->modal#closeOutside">
     <div data-modal-target="modal" class="animated fadeIn fixed inset-0 overflow-y-auto flex items-center justify-center" style="z-index: 99;">
       <!-- Modal Inner Container -->

@@ -6,11 +6,12 @@ module ApplicationHelper
     }.stringify_keys[flash_type.to_s] || flash_type.to_s
   end
 
-  def current_user_avatar
-    if current_user.avatar.attached?
-      image_tag(current_user.avatar, class: "avatar h-9 w-9")
+  def avatar_for(user, class_names=nil)
+    avatar_class_names = "avatar #{class_names}"
+    if user.avatar.attached?
+      image_tag(user.avatar, class: avatar_class_names)
     else
-      image_tag('https://avatars.githubusercontent.com/u/39127302?v=4', class: "avatar h-9 w-9")
+      image_tag('https://avatars.githubusercontent.com/u/39127302?v=4', class: avatar_class_names)
     end
   end
 end

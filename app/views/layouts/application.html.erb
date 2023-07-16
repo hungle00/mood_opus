@@ -15,7 +15,8 @@
       <%= render "shared/navbar" %>
       <%= render "shared/flash" %>
     </header>
-     <%= turbo_frame_tag "modal" %>
+    <%= turbo_frame_tag "embed_modal" %>
+    <%= turbo_frame_tag "membership_modal" %>
     <main class="container mx-auto">
       <%= yield %>
     </main>

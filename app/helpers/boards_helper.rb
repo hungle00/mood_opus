@@ -9,4 +9,9 @@ module BoardsHelper
   def filter_active_for?(type)
     params[:type] == type
   end
+
+  def members_for_select(board)
+    current_member = board.board_memberships.includes(:user).map(&:user)
+    User.pluck(:email, :id) - current_member.pluck(:email, :id)
+  end
 end

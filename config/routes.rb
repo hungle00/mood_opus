@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :boards do
     resources :embeds
+    resources :memberships
   end
 
   root to: 'home#index'
