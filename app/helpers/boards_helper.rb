@@ -14,4 +14,8 @@ module BoardsHelper
     current_member = board.board_memberships.includes(:user).map(&:user)
     User.pluck(:email, :id) - current_member.pluck(:email, :id)
   end
+
+  def user_is_board_member?(board)
+    board.users.include?(current_user)
+  end
 end

@@ -37,13 +37,8 @@
 .board-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 300px);
-  grid-auto-rows: 30px;
-  grid-column-gap: 12px;
-  justify-content: center;
-}
-
-.card {
-  margin-bottom: 10px;
-  grid-row-end: span 10;
+  grid-auto-rows: 20px;
+  grid-row-gap: 10px;
+  grid-column-gap: 16px;
 }
 
