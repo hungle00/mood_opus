@@ -26,6 +26,10 @@ class User < ApplicationRecord
   has_many :boards, through: :board_memberships
   has_one_attached :avatar
 
+  scope :search_by_name_or_email, ->(value) {
+    where("name LIKE ? OR email LIKE ?", "%#{value}%", "%#{value}%")
+  }
+
   def display_name
     name.presence || email.split("@").first
   end

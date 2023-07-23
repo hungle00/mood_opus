@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :boards do
     resources :embeds
-    resources :memberships
+    resources :memberships, except: :show do
+      get 'search', on: :collection
+    end
   end
 
   root to: 'home#index'

@@ -1,0 +1,10 @@
+<% (@users || []).each do |user| %>
+  <div class="flex justify-between items-center my-4">
+    <div class="flex gap-3">
+      <%= avatar_for(user, "w-8 h-8") %>
+      <span class="font-medium"><%= user&.display_name %></span>
+    </div>
+    <%= button_tag "Invite", name: "board_membership[user_id]", value: user.id,
+      data: {turbo_frame: "_top"}, class: "btn-primary rounded-lg md:mr-2" %>
+  </div>
+<% end %>

@@ -2,15 +2,14 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :user_id, collection: members_for_select(@board), label: 'Add member by email' %>
+  <div data-controller="search" data-search-url-value="<%= search_board_memberships_path %>">
+    <label class="block text-gray-700 mb-2 text-sm font-medium text-gray-600" >Add member by email</label>
+    <input type="text" class="block my-1 w-full rounded shadow appearance-none border border-gray-500" placeholder="Find by name or email" data-action="input->search#search" data-search-target="input">
+
+    <div data-search-target="result"></div>
   </div>
 
   <div class="form-inputs" >
     <%= f.input :write_access, label: "Can add embed to board?" %>
-  </div>
-
-  <div class="mt-6">
-    <%= f.button :submit, 'Save', data: {turbo_frame: "_top"} %>
   </div>
 <% end %>

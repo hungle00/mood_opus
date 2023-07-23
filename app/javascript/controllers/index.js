@@ -24,3 +24,6 @@ application.register("tabs", TabsController)
 
 import PreviewController from "./preview_controller"
 application.register("preview", PreviewController)
+
+import SearchController from "./search_controller"
+application.register("search", SearchController)

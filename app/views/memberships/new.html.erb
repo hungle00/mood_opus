@@ -23,10 +23,7 @@
               <%= render "memberships/form", board_membership: @membership %>
             </div>
             <div data-tabs-target="field">
-              <p><%= @memberships.count %> members</p>
-              <div class="flex mt-4">
-                <%= render partial: "memberships/membership", collection: @memberships %>
-              </div>
+              <%= turbo_frame_tag :memberships, src: board_memberships_path, loading: :lazy %>
             </div>
           </div>
         </div>

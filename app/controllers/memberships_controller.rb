@@ -2,9 +2,17 @@ class MembershipsController < ApplicationController
   before_action :set_board
   before_action :authenticate_user!
 
-  def new
+  def index
     @memberships = @board.board_memberships.includes(:user)
+  end
+
+  def new
     @membership = @board.board_memberships.new
+  end
+
+  def search
+    @users = User.search_by_name_or_email(params[:query]) 
+    render layout: false
   end
 
   def create
