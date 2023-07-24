@@ -4,7 +4,7 @@
     <%= render 'boards/owner_header' if user_is_board_member?(@board) %>
   </div>
 
-  <% if @embeds.empty? %>
+  <% if @embeds.empty? && params[:type].blank? %>
     <div class="border-dashed border-2 flex flex-col items-center mt-4 py-3 md:mx-4">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24" width="24" stroke="currentColor" class="w-10 h-10 text-gray-500">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>

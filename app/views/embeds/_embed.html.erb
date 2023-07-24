@@ -1,4 +1,4 @@
-<div class="bg-white border hover:shadow-md rounded-b-lg" style="grid-row-end: span <%= embed_card_ratio(embed) %>;" data-embed-id="<%= dom_id(embed) %>">
+<div class="bg-white border shadow hover:shadow-md rounded-b-lg" style="grid-row-end: span <%= embed_card_ratio(embed) %>;" data-embed-id="<%= dom_id(embed) %>">
   <div class="flex flex-col">
     <% if embed.embeddable_type == "EmbedLink" %>
       <%= render 'embeds/embed_link', embed: embed %>

@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="removals"
 export default class extends Controller {
-  static targets = [ "menu" ]
+  static targets = [ "content" ]
   static values = { visible: Boolean }
   
   off() {
@@ -12,10 +12,9 @@ export default class extends Controller {
   toggleMenu(event) {
     event.preventDefault()
     if (!this.visibleValue) {
-      this.menuTarget.classList.remove("hidden");
-      console.log(this.menuTarget)
+      this.contentTarget.classList.remove("hidden");
     } else {
-      this.menuTarget.classList.add("hidden");
+      this.contentTarget.classList.add("hidden");
     }
     this.visibleValue = !this.visibleValue;
   }

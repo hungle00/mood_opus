@@ -20,6 +20,7 @@ class BoardsController < ApplicationController
 
   # GET /boards/1/edit
   def edit
+    @memberships = @board.board_memberships
   end
 
   # POST /boards or /boards.json
@@ -69,6 +70,6 @@ class BoardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def board_params
-      params.require(:board).permit(:title, embeds_attributes: [:id, :title, :input, :_destroy])
+      params.require(:board).permit(:title, :public, embeds_attributes: [:id, :title, :input, :_destroy])
     end
 end

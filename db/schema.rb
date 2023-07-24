@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_30_152006) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_24_141534) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_30_152006) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "public", default: false
   end
 
   create_table "embed_links", force: :cascade do |t|

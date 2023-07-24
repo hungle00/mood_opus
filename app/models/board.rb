@@ -7,6 +7,7 @@
 #  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  public     :boolean          default(FALSE)
 #
 class Board < ApplicationRecord
   extend FriendlyId

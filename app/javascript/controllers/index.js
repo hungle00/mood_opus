@@ -10,8 +10,8 @@ application.register("filter", FilterController)
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
 
-import NavController from "./nav_controller"
-application.register("nav", NavController)
+import MenuController from "./menu_controller"
+application.register("menu", MenuController)
 
 import NestedRondoController from "./nested_rondo_controller"
 application.register("nested-rondo", NestedRondoController)
