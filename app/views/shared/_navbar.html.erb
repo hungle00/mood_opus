@@ -2,19 +2,15 @@
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-2">
     <div class="flex justify-between">
       <div class="flex">
-        <div class="flex-shrink-0 flex items-center py-1">
+        <div class="flex-shrink-0 flex items-center">
           <a href="/">
-            <span class="sr-only">Kickstarter</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3a23bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
-            </svg>
+            <%= image_tag 'logo.png', class: "h-10 w-auto" %>
           </a>
         </div>
       </div>
       <% if user_signed_in? %>
         <div class="md:ml-6 md:flex sm:items-center">
           <div class="hidden md:ml-6 md:flex md:space-x-4">
-            <a class="text-sm border-transparent hover:border-red-400 hover:text-gray-700 inline-flex items-center px-2 pb-1 pt-2 border-b-2 font-medium text-gray-900" href="#">Opus Mood</a>
             <%= link_to "My boards", boards_path, class: "text-sm border-transparent hover:border-red-400 hover:text-gray-700 inline-flex items-center px-2 pb-1 pt-2 border-b-2 font-medium text-gray-900" %>
           </div>
           <div class="flex items-center md:ml-1 gap-1">
@@ -33,9 +29,10 @@
                 </button>
               </div>
               <div data-nav-target="menu" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50 hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                <%= link_to "Edit account", edit_profile_path, class: "text-gray-700 group flex items-center px-3 py-2 text-sm" %>
+                <%= link_to "My boards", boards_path, class: "block md:hidden text-gray-700 flex items-center px-3 py-2 text-sm" %>
+                <%= link_to "Edit account", edit_profile_path, class: "text-gray-700 flex items-center px-3 py-2 text-sm" %>
                 <%= link_to 'Log out', destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'},
-                  class: "text-gray-700  group flex items-center px-3 py-2 text-sm" %>
+                  class: "text-gray-700 flex items-center px-3 py-2 text-sm" %>
               </div>
             </div>
           </div>
