@@ -90,6 +90,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dockerfile-rails (1.5.1)
+      rails
     erubi (1.12.0)
     ffi (1.15.5)
     friendly_id (5.5.0)
@@ -233,6 +235,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise (~> 4.8, >= 4.8.1)
+  dockerfile-rails (>= 1.5)
   friendly_id (~> 5.4, >= 5.4.2)
   image_processing (~> 1.2)
   jbuilder

@@ -1,0 +1,24 @@
+# fly.toml app configuration file generated for mood-opus on 2023-07-24T16:50:50+07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "mood-opus"
+primary_region = "sin"
+console_command = "/rails/bin/rails console"
+
+[[mounts]]
+  source = "data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[statics]]
+  guest_path = "/rails/public"
+  url_prefix = "/"
