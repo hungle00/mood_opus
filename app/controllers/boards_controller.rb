@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 
   # GET /boards or /boards.json
   def index
@@ -9,6 +9,8 @@ class BoardsController < ApplicationController
 
   # GET /boards/1 or /boards/1.json
   def show
+    return redirect_to root_path unless @board.users.include?(current_user) || @board.public
+
     @embeds = @board.embeds
     @embeds = @embeds.filter_by_type(params[:type]) if params[:type].present?
   end
