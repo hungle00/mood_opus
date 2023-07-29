@@ -24,7 +24,7 @@ FROM base as build
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential curl libvips node-gyp pkg-config python
+    apt-get install --no-install-recommends -y build-essential curl libpq-dev libvips node-gyp pkg-config python
 
 # Install JavaScript dependencies
 ARG NODE_VERSION=14.19.1
@@ -60,7 +60,7 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl imagemagick libsqlite3-0 libvips && \
+    apt-get install --no-install-recommends -y curl imagemagick libvips postgresql-client && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Copy built artifacts: gems, application
@@ -69,13 +69,11 @@ COPY --from=build /rails /rails
 
 # Run and own only the runtime files as a non-root user for security
 RUN useradd rails --create-home --shell /bin/bash && \
-    mkdir /data && \
-    chown -R rails:rails db log storage tmp /data
+    chown -R rails:rails db log storage tmp
 USER rails:rails
 
 # Deployment options
-ENV DATABASE_URL="sqlite3:///data/production.sqlite3" \
-    RAILS_LOG_TO_STDOUT="1" \
+ENV RAILS_LOG_TO_STDOUT="1" \
     RAILS_SERVE_STATIC_FILES="true"
 
 # Entrypoint prepares the database.
@@ -83,5 +81,4 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-VOLUME /data
 CMD ["./bin/rails", "server"]

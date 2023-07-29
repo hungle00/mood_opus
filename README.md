@@ -7,6 +7,12 @@ Mood Opus is a useful tool if you want:
 - Collect media links based on favorite topics from multiple social media platform link Youtube, Bili, ...
 - Create a media moodboard for your current mood and sharing with your friends.
 
+## Try the demo
+Please visit https://mood-opus.fly.dev/ and use demo user to login.  
+> email: skywalker@email.com, password: anakin66
+
+This demo site is built on fly.io free tier so it can be a little bit slow.
+
 ## Screenshot
 ![Mood Opus Board](/screenshots/mood_opus_1.png)
 
@@ -19,7 +25,7 @@ Mood Opus is a useful tool if you want:
 - Hotwire ( Turbo + Stimulus )
 - Tailwindcss
 - NodeJS + ESbuild
-- Sqlite 3 (current) / Postgresql ( will change in future ) 
+- Postgresql 
 - libvips ( image processing library )
 
 ### Setup
@@ -28,8 +34,9 @@ Install Ruby and Javascript dependencies:
 bundle install
 yarn install
 ```
-Database migration:
+Create and migration database: 
 ```
+rails db:create
 rails db:migrate
 ```
 Start server:
