@@ -12,3 +12,7 @@ user.save!
 
 board = Board.create!(title: "Friday mood", public: true)
 board.board_memberships.create!(user: user, owner: true, write_access: true)
+
+
+# Update counter cache column value for existing board
+# Board.all.each { |board| Board.reset_counters(board.id, :embeds) }

@@ -14,4 +14,8 @@ module ApplicationHelper
       image_tag('https://avatars.githubusercontent.com/u/39127302?v=4', class: avatar_class_names)
     end
   end
+
+  def bg_color
+    current_page?(root_path) ? 'bg-gradient' : 'bg-background'
+  end
 end

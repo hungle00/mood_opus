@@ -34,10 +34,6 @@
   }
 }
 
-.bg-background {
-  background-color: rgb(252 245 242);
-}
-
 .board-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 300px);
@@ -46,3 +42,13 @@
   grid-column-gap: 16px;
 }
 
+.bg-background {
+  background-color: rgb(252 245 242);
+}
+
+.bg-gradient {
+  background-image: linear-gradient(to right,var(--tw-gradient-stops));
+  --tw-gradient-from: #fde6e6 var(--tw-gradient-from-position);
+  --tw-gradient-to: #fff7f7 var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from),var(--tw-gradient-to);
+}

@@ -1,3 +1,19 @@
-<div class="mt-4 ml-2">
-  <h2 class="text-2xl my-2">Rails kick-off</h2>
-</div>
+<div class="max-w-6xl mx-auto mt-4 px-2">
+  <div class="h-40 pt-4 text-center">
+    <h1 class="text-red-600 text-5xl font-weight">Mood Opus</h1>
+    <h2 class="mt-4 text-xl">Create boards for your mood or explore others board</h2>
+  </div>
+
+  <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4 mt-4">
+    <% @boards.each do |board| %>
+      <div class="rounded-lg shadow-lg hover:shadow-xl bg-white aspect-square relative flex flex-col">
+        <%= link_to '', board, class: 'w-full h-full absolute' %>
+        <%= image_tag 'default.jpg', class: 'w-full h-2/3 rounded-t-lg' %>
+        <div class="p-2 text-gray-800">
+          <p class="text-lg font-bold leading-6 "><%= board.title %></p>
+          <span class="text-sm font-light"><%= board.embeds.size %> embeds</span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<div>

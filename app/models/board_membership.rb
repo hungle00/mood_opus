@@ -2,9 +2,9 @@
 #
 # Table name: board_memberships
 #
-#  id           :integer          not null, primary key
-#  user_id      :integer          not null
-#  board_id     :integer          not null
+#  id           :bigint           not null, primary key
+#  user_id      :bigint           not null
+#  board_id     :bigint           not null
 #  owner        :boolean
 #  write_access :boolean
 #  created_at   :datetime         not null

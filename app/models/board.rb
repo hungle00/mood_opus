@@ -2,12 +2,13 @@
 #
 # Table name: boards
 #
-#  id         :integer          not null, primary key
-#  title      :string           not null
-#  slug       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  public     :boolean          default(FALSE)
+#  id           :bigint           not null, primary key
+#  title        :string           not null
+#  slug         :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  public       :boolean          default(FALSE)
+#  embeds_count :integer
 #
 class Board < ApplicationRecord
   extend FriendlyId
@@ -20,4 +21,6 @@ class Board < ApplicationRecord
   accepts_nested_attributes_for :embeds, reject_if: :all_blank, allow_destroy: true
 
   validates :title, presence: true
+
+  scope :publish, -> { where("public IS true AND embeds_count > 0") }
 end

@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @boards = Board.all
+    @boards = Board.publish
   end
 end
