@@ -24,6 +24,7 @@ class User < ApplicationRecord
 
   has_many :board_memberships
   has_many :boards, through: :board_memberships
+  has_many :notifications, as: :recipient, dependent: :destroy
   has_one_attached :avatar
 
   scope :search_by_name_or_email, ->(value) {

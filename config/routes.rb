@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   scope :users do
     resource :profile, only: %i[edit update]
   end
+
+  get "/notifications", to: "notifications#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

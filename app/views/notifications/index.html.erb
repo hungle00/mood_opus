@@ -1,0 +1,14 @@
+<div class="max-w-6xl mx-auto mt-4 px-2">
+  <h1>Notifications</h1>
+
+  <ul>
+    <% @notifications.each do |notification| %>
+      <% instance = notification.to_notification %>
+      <li>
+        <p>Sent at: <%= notification&.created_at.to_s %></p>
+        <p>Message: <%= instance.message %></p>
+      </li>
+    <% end %>
+  </ul>
+  
+<div>

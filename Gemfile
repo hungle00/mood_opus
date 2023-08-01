@@ -75,3 +75,4 @@ gem "friendly_id", "~> 5.4", ">= 5.4.2"
 gem 'rondo_form', '~> 0.2.1'
 gem "dockerfile-rails", ">= 1.5", :group => :development
 gem "azure-storage-blob", require: false
+gem "noticed", "~> 1.6"
