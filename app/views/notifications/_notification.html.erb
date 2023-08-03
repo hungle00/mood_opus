@@ -1,0 +1,9 @@
+<div class="rounded-lg border bg-white p-3 flex gap-4">
+  <%= image_tag 'https://avatars.githubusercontent.com/u/39127302?v=4', class: "avatar h-10 w-10" %>
+  <div>
+    <%= link_to notification.to_notification.url, class: "mb-2" do %>
+  	  <%= notification.to_notification.message %>
+    <% end %>
+    <p class="text-gray-600">Sent at: <%= time_ago_in_words(notification&.created_at) %></p>
+  </div>    
+</div>

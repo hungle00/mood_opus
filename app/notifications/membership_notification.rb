@@ -6,28 +6,21 @@
 class MembershipNotification < Noticed::Base
   # Add your delivery methods
   #
-  # deliver_by :database
+  deliver_by :database
   # deliver_by :email, mailer: "UserMailer"
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
 
   # Add required params
-  #
-  # param :post
+  param :board
 
   # Define helper methods to make rendering easier.
-  #
-  # def message
-  #   t(".message")
-  # end
-  #
-  # def url
-  #   post_path(params[:post])
-  # end
-
-  deliver_by :database
- 
+  
   def message
-    "A system notification"
+    "You are invited to join this board: #{params[:board].title}"
+  end
+  
+  def url
+    board_path(params[:board])
   end
 end

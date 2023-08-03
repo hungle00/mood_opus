@@ -13,4 +13,12 @@
 class BoardMembership < ApplicationRecord
   belongs_to :user
   belongs_to :board
+
+  after_create_commit :notify_user
+
+  private
+
+  def notify_user
+    MembershipNotification.with(board: board).deliver(user)
+  end
 end
