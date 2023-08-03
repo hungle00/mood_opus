@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="filter"
+// Connects to data-controller="search"
 export default class extends Controller {
   static targets = [ "input", "result" ]
   static values = { url: String };

@@ -1,11 +1,11 @@
-<div class="bg-white border shadow hover:shadow-md rounded-b-lg" style="grid-row-end: span <%= embed_card_ratio(embed) %>;" data-embed-id="<%= dom_id(embed) %>">
-  <div class="flex flex-col">
+<div class="bg-white border shadow hover:shadow-md rounded-b-lg card" data-embed-id="<%= dom_id(embed) %>">
+  <div class="content">
     <% if embed.embeddable_type == "EmbedLink" %>
       <%= render 'embeds/embed_link', embed: embed %>
     <% else %>
       <%= render 'embeds/embed_image', embed: embed %>
     <% end %>
-    <div class="text-gray-800 p-2 relative basis-14">
+    <div class="text-gray-800 p-2 relative">
       <%= link_to '', [embed.board, embed], class: 'w-full h-full absolute' %>
       <p class="text-md font-semibold leading-6 "><%= embed.title %></p>
       <div class="flex items-center justify-between text-sm text-gray-500 space-x-1">

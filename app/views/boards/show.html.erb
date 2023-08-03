@@ -29,7 +29,8 @@
       </ul>
       <p class="font-medium md:mr-4"><%= @embeds.size %> pins</p>
     </div>
-    <div class="board-grid justify-center my-5">
+    <div class="board-grid justify-center my-5" 
+      data-controller="masonry" data-action="resize@window->masonry#resizeAllItems">
       <%= render @board, embeds: @embeds %>
     </div>
   <% end %>
