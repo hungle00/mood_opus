@@ -25,7 +25,11 @@ class User < ApplicationRecord
   has_many :board_memberships
   has_many :boards, through: :board_memberships
   has_many :notifications, as: :recipient, dependent: :destroy
-  has_one_attached :avatar
+  
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize_to_limit: [200, 200]
+  end
+  validates :avatar, content_type: ["image/png", "image/jpeg", "image/jpg"], max_file_size: 2.megabytes
 
   scope :search_by_name_or_email, ->(value) {
     where("name LIKE ? OR email LIKE ?", "%#{value}%", "%#{value}%")

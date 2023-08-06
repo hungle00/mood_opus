@@ -12,12 +12,14 @@ class EmbedsController < ApplicationController
 
   def create
     @embed = @board.embeds.build(embed_params)
-    # @embed = MediaAsset.new(embed_params)
     if @embed.save
       redirect_to board_url(@board), notice: "Embed was successfully created."
     else
       redirect_to board_url(@board), alert: "Cant't create new embed"
     end
+  rescue ActiveRecord::NotNullViolation => error
+    logger.debug error
+    redirect_to board_url(@board), alert: "Cant't create new embed"
   end
 
   def edit

@@ -10,6 +10,7 @@
 class EmbedLink < ApplicationRecord
   validates :url, presence: true
   has_one :embed, as: :embeddable, touch: true
+  before_save :valid_embed_url
 
   BILI_URL_REGEXP = %r{(https?://)(www.)?(bilibili\.com/video/av)([0-9]+)(&\S+)?(\?\S+)?}
   BILI_B_URL_REGEXP = %r{(https?://)(www.)?(bilibili\.com/video/BV)([a-zA-Z0-9]+)(&\S+)?(\?\S+)?}
@@ -30,5 +31,19 @@ class EmbedLink < ApplicationRecord
     end
 
     url
+  end
+
+  private
+
+  def valid_embed_url
+    allowed_link = [BILI_URL_REGEXP, BILI_B_URL_REGEXP, YOUTUBE_URL_REGEXP]
+    unless allowed_link.any? { |regex_url| match_allowed_link?(regex_url) }
+      errors.add(:base, 'Not allowed link')
+      throw :abort
+    end
+  end
+
+  def match_allowed_link?(regex_link)
+    !!(url =~ regex_link)
   end
 end

@@ -9,7 +9,7 @@ module ApplicationHelper
   def avatar_for(user, class_names=nil)
     avatar_class_names = "avatar #{class_names}"
     if user.avatar.attached?
-      image_tag(user.avatar, class: avatar_class_names)
+      image_tag(user.avatar.variant(:thumb), class: avatar_class_names)
     else
       image_tag('https://avatars.githubusercontent.com/u/39127302?v=4', class: avatar_class_names)
     end
