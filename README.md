@@ -7,17 +7,6 @@ Mood Opus is a useful tool if you want:
 - Collect media links based on favorite topics from multiple social media platform link Youtube, Bili, ...
 - Create a media moodboard for your current mood and sharing with your friends.
 
-## Try the demo
-Please visit https://mood-opus.fly.dev/ and use demo user to login.  
-> email: skywalker@email.com, password: anakin66
-
-This demo site is built on fly.io free tier so it can be a little bit slow.
-
-## Screenshot
-![Mood Opus Board](/screenshots/mood_opus_1.png)
-
-![Mood Opus Upload](/screenshots/mood_opus_2.png) 
-
 ## Development
 
 ### Techstack 
@@ -42,4 +31,15 @@ rails db:migrate
 Start server:
 ```
 ./bin/dev
+```
+
+### Docker
+```
+docker-compose build
+
+docker-compose run --rm web bin/rails db:create  
+docker-compose run --rm web bin/rails db:migrate  
+docker-compose run --rm web bin/rails db:seed  
+
+docker-compose up 
 ```

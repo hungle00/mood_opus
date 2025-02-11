@@ -1,4 +1,6 @@
-FROM ruby:3.0.0-slim
+# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
+ARG RUBY_VERSION=3.3.5
+FROM ruby:$RUBY_VERSION-slim as base
 
 RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
     build-essential \
@@ -12,7 +14,7 @@ RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add Node.js to sources list
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 
 # Install Node.js version that will enable installation of yarn
 RUN apt-get install -y --no-install-recommends \
